@@ -19,9 +19,12 @@
     event.preventDefault();
     var phoneNumber = document.getElementById('phone').value;
     
-    // Vérifier si le numéro de téléphone comporte exactement 10 caractères
+    // Supprimer les espaces
+    phoneNumber = phoneNumber.replace(/\s/g, '');
+
+    // Vérifier si le numéro de téléphone comporte exactement 10 chiffres
     if (phoneNumber.length !== 10 || isNaN(phoneNumber)) {
-        document.getElementById('result').innerText = "Merci de saisir un numéro de téléphone valide (10 chiffres).";
+        document.getElementById('result').innerText = "Veuillez saisir un numéro de téléphone valide (10 chiffres).";
         return;
     }
     
