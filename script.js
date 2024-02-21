@@ -26,6 +26,6 @@ document.getElementById('searchForm').addEventListener('submit', function(event)
             }
         }
     };
-    xhr.open('GET', 'lien_vers_votre_fichier_csv', true);
+    xhr.open('GET', 'https://github.com/adperetti/odigo/blob/main/BDDTEL.csv', true);
     xhr.send();
 });
