@@ -16,23 +16,30 @@
 
     <script>
         document.getElementById('searchForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            var phoneNumber = document.getElementById('phone').value;
-            var data = document.getElementById('data').innerText;
-            var lines = data.split('\n');
-            var found = false;
-            for (var i = 0; i < lines.length; i++) {
-                var parts = lines[i].split(';');
-                if (parts[1] === phoneNumber) {
-                    document.getElementById('result').innerText = "Nom du client: " + parts[0];
-                    found = true;
-                    break;
-                }
-            }
-            if (!found) {
-                document.getElementById('result').innerText = "Aucun client trouvé pour ce numéro de téléphone.";
-            }
-        });
+    event.preventDefault();
+    var phoneNumber = document.getElementById('phone').value;
+    
+    // Vérifier si le numéro de téléphone comporte exactement 10 caractères
+    if (phoneNumber.length !== 10 || isNaN(phoneNumber)) {
+        document.getElementById('result').innerText = "Veuillez saisir un numéro de téléphone valide (10 chiffres).";
+        return;
+    }
+    
+    var data = document.getElementById('data').innerText;
+    var lines = data.split('\n');
+    var found = false;
+    for (var i = 0; i < lines.length; i++) {
+        var parts = lines[i].split(';');
+        if (parts[1] === phoneNumber) {
+            document.getElementById('result').innerText = "Nom du client: " + parts[0];
+            found = true;
+            break;
+        }
+    }
+    if (!found) {
+        document.getElementById('result').innerText = "Aucun client trouvé pour ce numéro de téléphone.";
+    }
+});
     </script>
 
     <div id="data" style="display: none;">
