@@ -11,7 +11,7 @@ document.getElementById('searchForm').addEventListener('submit', function(event)
                 var lines = data.split('\n');
                 var found = false;
                 for (var i = 0; i < lines.length; i++) {
-                    var parts = lines[i].split(',');
+                    var parts = lines[i].split(';'); // Utiliser le point-virgule comme séparateur
                     if (parts[1] === phoneNumber) {
                         document.getElementById('result').innerText = "Nom du client: " + parts[0];
                         found = true;
